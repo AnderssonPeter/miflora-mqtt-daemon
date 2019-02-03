@@ -376,7 +376,7 @@ while True:
             sleep(0.5) # some slack for the publish roundtrip and callback function
         elif reporting_mode == 'homeassistant-mqtt':
             print_line('Publishing to MQTT topic "{}/sensor/{}/state"'.format(base_topic, flora_name).lower())
-            mqtt_client.publish('{}/sensor/{}/state'.format(base_topic, flora_name).lower(), json.dumps(data))
+            mqtt_client.publish('{}/sensor/{}/state'.format(base_topic, flora_name).lower(), json.dumps(data), retain=True)
             sleep(0.5) # some slack for the publish roundtrip and callback function
         elif reporting_mode == 'mqtt-homie':
             print_line('Publishing data to MQTT base topic "{}/{}/{}"'.format(base_topic, device_id, flora_name))
