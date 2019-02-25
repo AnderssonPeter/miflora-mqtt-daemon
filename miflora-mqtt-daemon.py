@@ -306,7 +306,6 @@ elif reporting_mode == 'homeassistant-mqtt':
             payload['value_template'] = "{{ value_json.%s }}" % (sensor, )
             payload['name'] = "{} {}".format(flora_name, sensor.title())
             payload['force_update'] = True
-            payload['retain'] = True
             if 'device_class' in params:
                 payload['device_class'] = params['device_class']
             mqtt_client.publish('{}/{}_{}/config'.format(topic_path, flora_name, sensor).lower(), json.dumps(payload), 1, True)
