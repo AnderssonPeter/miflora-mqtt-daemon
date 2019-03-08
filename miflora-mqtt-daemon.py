@@ -365,7 +365,7 @@ while True:
 
         if reporting_mode == 'mqtt-json':
             print_line('Publishing to MQTT topic "{}/{}"'.format(base_topic, flora_name))
-            mqtt_client.publish('{}/{}'.format(base_topic, flora_name), json.dumps(data))
+            mqtt_client.publish('{}/{}'.format(base_topic, flora_name), json.dumps(data), retain=True)
             sleep(0.5) # some slack for the publish roundtrip and callback function
         elif reporting_mode == 'thingsboard-json':
             print_line('Publishing to MQTT topic "{}" username "{}"'.format(base_topic, flora_name))
